@@ -1,0 +1,38 @@
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+        Random randomNumber = new Random();
+        int sumElement = 0;
+        int size = 9;
+        int[][] arr = new int[size][size];
+        for (int i = 0; i<size; i++){
+            for (int j = 0; j<size; j++){
+                arr[i][j] = randomNumber.nextInt(1,100);
+            }
+        }
+        for (int row = 0; row<size; row++){
+            for (int col = 0; col<size; col++){
+                System.out.print(arr[row][col] + "\t");
+            }
+            System.out.println();
+        }
+        for (int row = 0; row<size; row++) {
+            for (int col = 0; col < size; col++) {
+                if (row == 0 || row == size - 1 || col == 0 || col == size - 1 || row + col == (size-1)){
+                    sumElement += arr[row][col];
+                    arr[row][col] = 0;
+                }
+            }
+        }
+        System.out.println();
+        for (int row = 0; row<size; row++){
+            for (int col = 0; col<size; col++){
+                System.out.print(arr[row][col] + "\t");
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("Сумма элементов: "+ sumElement);
+    }
+}
